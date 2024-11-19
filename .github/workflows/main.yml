@@ -33,7 +33,7 @@ jobs:
         run: npm install
 
       - name: Build Angular APP
-        run: nom run build:prod
+        run: npm run build:prod
 
       - name: Deploy Github pages
         uses: crazy-max/ghaction-github-pages@v4.1.0
