@@ -4,6 +4,6 @@ export class TaskEvent {
     
     constructor(action:string, taskId:number ) {
         this.action = action;
-        this.taskId = taskId;
+        this.taskId = taskId
     }
 }
