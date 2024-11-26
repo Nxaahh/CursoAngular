@@ -6,31 +6,35 @@
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre</label>
                 <input type="text" 
+                [ngClass]="{'is-invalid': this.formTaskEdit.get('name')?.invalid}"
                 class="form-control" formControlName="name" id="exampleFormControlInput1">
 
-                
+                <small class="text-danger" *ngIf="formTaskEdit.get('name')?.errors?.['required']"> El campo es
+                    requerido </small>
             </div>
 
 
             <!-- Descripcion -->
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripcion</label>
-                <textarea class="form-control" 
+                <textarea class="form-control" [ngClass]="{'is-invalid': this.formTaskEdit.get('description')?.invalid}"
                     formControlName="description" id="exampleFormControlTextarea1" rows="10"></textarea>
 
-            
+                <small class="text-danger" *ngIf="formTaskEdit.get('description')?.errors?.['required']"> El campo es
+                    requerido </small>
             </div>
             <!-- Prioridad -->
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Prioridad</label>
-                <select  class="form-control"
+                <select [ngClass]="{'is-invalid': this.formTaskEdit.get('priority')?.invalid}" class="form-control"
                     formControlName="priority" id="exampleFormControlSelect1">
                     <option value="H">Alta</option>
                     <option value="M">Media</option>
                     <option value="L">Baja</option>
                 </select>
 
-                
+                <small class="text-danger" *ngIf="formTaskEdit.get('priority')?.errors?.['required']"> El campo es
+                    requerido </small>
             </div>
 
             <!-- Fecha de expiracion -->
