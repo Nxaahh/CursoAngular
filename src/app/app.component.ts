@@ -15,7 +15,7 @@ import { TaskresumeComponent } from './componentes/task/taskresume/taskresume.co
 })
 export class AppComponent {
   title = 'Curso Angular';
-  nombre = 'Noah Montaño'
+  nombre = 'Noah'
   imagenAleatorio:string=""
 
   muestraImagen() {
