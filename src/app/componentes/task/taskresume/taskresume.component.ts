@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Task,TaskPriority,TaskStatus } from '../../../models/task.models';
-import { TaskEvent } from '../../../models/TaskEvent.models';
+import { TaskEvent } from '../../../models/taskevent.models';
 
 @Component({
   selector: 'app-taskresume',

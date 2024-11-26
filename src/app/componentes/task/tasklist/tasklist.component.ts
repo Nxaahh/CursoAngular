@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Task, TaskPriority, TaskStatus } from '../../../models/task.models';
 import { CommonModule } from '@angular/common';
 import { TaskresumeComponent } from '../taskresume/taskresume.component';
-import { TaskEvent } from '../../../models/TaskEvent.models';
+import { TaskEvent } from '../../../models/taskevent.models';
 
 @Component({
   selector: 'app-tasklist',
