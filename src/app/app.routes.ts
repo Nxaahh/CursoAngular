@@ -9,5 +9,5 @@ export const routes: Routes = [
    {path:'login',component:LoginComponent},
    {path:'sigin',component:SiginComponent},
    {path:'tasklist',component:TasklistComponent},
-   {path:'',redirectTo:'/tasklist',pathMatch:'full'}
+   {path:'',redirectTo:'',pathMatch:'full'}
 ];
