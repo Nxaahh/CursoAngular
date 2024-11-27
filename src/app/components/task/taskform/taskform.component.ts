@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { customValidator } from './taskform.validators';
+import {customValidator} from './taskForm.validators';
+import {Task, TaskStatus} from '../../../models/task.models';
 
 @Component({
   selector: 'app-taskform',
@@ -11,25 +12,63 @@ import { customValidator } from './taskform.validators';
   styleUrl: './taskform.component.css'
 })
 export class TaskformComponent {
+
+  @Input()
+  taskToEdit: Task | null = null; // Tarea a editar (null si estamos añadiendo)
+  @Output()
+  saveTask = new EventEmitter<Task>(); // Emitir tarea editada
+  @Output()
+  addTask = new EventEmitter<Task>(); // Emitir nueva tarea
+
   formTaskEdit: FormGroup
 
   constructor(formBuilder: FormBuilder) {
     this.formTaskEdit = formBuilder.group({
-      'name': ['', [Validators.required,Validators.maxLength(50),Validators.minLength(5)]],
-      'description': ['', [Validators.required,Validators.maxLength(250)]],
-      'priority': ['', [Validators.required,Validators.pattern('^[HML]$')]],
+      'name': ['', [Validators.required, Validators.maxLength(50),Validators.minLength(5)]],
+      'description': ['', [Validators.required, Validators.maxLength(255)]],
+      'priority': ['', [Validators.required, Validators.pattern('^[HML]$')]],
       'expirationDate': ['', [Validators.required, customValidator()]],
 
     })
   }
 
   onSubmit() {
-
-
     if (this.formTaskEdit.valid) {
-      console.log(this.formTaskEdit.value)
+      if (this.taskToEdit) {
+       
+      } else {
+        // Añadir nueva tarea
+        const newTask: Task = new Task(
+          Math.floor(Math.random() * 1000000), // ID aleatorio
+          this.formTaskEdit.value.name,
+          this.formTaskEdit.value.description,
+          this.formTaskEdit.value.priority,
+          TaskStatus.PENDING,
+          new Date(this.formTaskEdit.value.expirationDate),
+          new Date(), // Fecha de creación
+          false
+        );
+        this.addTask.emit(newTask); // Emitir nueva tarea
+      }
+
+      this.formTaskEdit.reset(); // Limpiar el formulario después de guardar
     } else {
-      console.log(`El formulario tiene errores ${this.formTaskEdit.errors}`)
+      console.log('El formulario tiene errores:', this.formTaskEdit.errors);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['taskToEdit'] && this.taskToEdit) {
+      // Cargar los valores de la tarea en el formulario
+      this.formTaskEdit.patchValue({
+        name: this.taskToEdit.name,
+        description: this.taskToEdit.description,
+        priority: this.taskToEdit.priority,
+        expirationDate: this.taskToEdit.expirationDate.toISOString().slice(0, 16),
+      });
+    } else {
+      // Limpiar el formulario si no hay tarea en edición
+      this.formTaskEdit.reset();
     }
   }
 
