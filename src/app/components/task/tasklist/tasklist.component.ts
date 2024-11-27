@@ -24,17 +24,12 @@ export class TasklistComponent {
 
   taskToEdit: Task | null = null; 
 
+  //añade una lista al array
   addNewTask(task: Task) {
     this.tasklist.push(task); 
   }
 
-  saveTask(updatedTask: Task) {
-    const index = this.tasklist.findIndex(task => task.id === updatedTask.id);
-    if (index > -1) {
-      this.tasklist[index] = updatedTask; 
-    }
-    this.taskToEdit = null; 
-  }
+ 
 
   setTaskToEdit(task: Task) {
     this.taskToEdit = task; 

@@ -39,24 +39,26 @@ export class TaskformComponent {
       } else {
         // Añadir nueva tarea
         const newTask: Task = new Task(
-          Math.floor(Math.random() * 1000000), // ID aleatorio
+          Math.random(),
           this.formTaskEdit.value.name,
           this.formTaskEdit.value.description,
           this.formTaskEdit.value.priority,
           TaskStatus.PENDING,
           new Date(this.formTaskEdit.value.expirationDate),
-          new Date(), // Fecha de creación
+          new Date(), 
           false
         );
-        this.addTask.emit(newTask); // Emitir nueva tarea
+        this.addTask.emit(newTask); 
       }
 
-      this.formTaskEdit.reset(); // Limpiar el formulario después de guardar
+      this.formTaskEdit.reset(); 
     } else {
       console.log('El formulario tiene errores:', this.formTaskEdit.errors);
     }
   }
 
+
+  // esto se ejecuta cuando no se usan ls inputs
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['taskToEdit'] && this.taskToEdit) {
       // Cargar los valores de la tarea en el formulario
@@ -66,10 +68,11 @@ export class TaskformComponent {
         priority: this.taskToEdit.priority,
         expirationDate: this.taskToEdit.expirationDate.toISOString().slice(0, 16),
       });
-    } else {
-      // Limpiar el formulario si no hay tarea en edición
+    } else 
+
+    //si n se esta editando nada limpia el formulario
       this.formTaskEdit.reset();
     }
   }
 
-}
+
