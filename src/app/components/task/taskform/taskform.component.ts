@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import {Component, EventEmitter, Input, Output, SimpleChanges} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import {customValidator} from './taskForm.validators';
+import {customValidator} from './taskform.validators';
 import {Task, TaskStatus} from '../../../models/task.models';
 
 @Component({
@@ -18,7 +18,7 @@ export class TaskformComponent {
   @Output()
   saveTask = new EventEmitter<Task>(); // Emitir tarea editada
   @Output()
-  addTask = new EventEmitter<Task>(); // Emitir nueva tarea
+  addTask = new EventEmitter<Task>(); // Emitir nueva tar
 
   formTaskEdit: FormGroup
 
