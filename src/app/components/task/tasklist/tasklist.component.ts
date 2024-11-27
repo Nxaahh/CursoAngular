@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Task, TaskPriority, TaskStatus} from '../../../models/task.models';
 import {CommonModule} from '@angular/common';
 import {ResumeComponent} from '../resume/resume.component';
-import {TaskEvent} from '../../../models/TaskEvent.models';
+import {TaskEvent} from '../../../models/taskevent.models';
 import {TaskformComponent} from '../taskform/taskform.component';
 
 @Component({
@@ -30,7 +30,7 @@ export class TasklistComponent {
   }
 
  
-
+//pone la lista en el formulair
   setTaskToEdit(task: Task) {
     this.taskToEdit = task; 
   }
