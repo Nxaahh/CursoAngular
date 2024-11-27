@@ -43,6 +43,6 @@ export class ResumeComponent {
   }
 
   onEditTask() {
-    this.editTask.emit(this.task); // Emitir la tarea actual para ser editada
+    this.editTask.emit(this.task); // Emitir la tarea actual para ser editad
   }
 }
