@@ -5,46 +5,53 @@
             <!-- Nombre -->
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre</label>
-                <input type="text" 
-                [ngClass]="{'is-invalid': this.formTaskEdit.get('name')?.invalid}"
-                class="form-control" formControlName="name" id="exampleFormControlInput1">
+                <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput1"
 
-                <small class="text-danger" *ngIf="formTaskEdit.get('name')?.errors?.['required']"> El campo es
-                    requerido </small>
+                [ngClass]="{'is-valid': formTaskEdit.get('name')?.valid && formTaskEdit.get('name')?.touched,'is-invalid': formTaskEdit.get('name')?.invalid && formTaskEdit.get('name')?.touched}">
+                <div class="invalid-feedback" *ngIf="formTaskEdit.get('name')?.invalid && formTaskEdit.get('name')?.touched">
+                    <small *ngIf="formTaskEdit.get('name')?.errors?.['required']"> Please choose a username.</small>
+                    <small *ngIf="formTaskEdit.get('name')?.errors?.['maxlength']"> Demasiado Largo.</small>
+                    <small *ngIf="formTaskEdit.get('name')?.errors?.['minlength']"> Demasiado corto</small>
+
+                </div>
             </div>
+           
+              
 
 
             <!-- Descripcion -->
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripcion</label>
-                <textarea class="form-control" [ngClass]="{'is-invalid': this.formTaskEdit.get('description')?.invalid}"
+                <textarea class="form-control" 
                     formControlName="description" id="exampleFormControlTextarea1" rows="10"></textarea>
 
-                <small class="text-danger" *ngIf="formTaskEdit.get('description')?.errors?.['required']"> El campo es
-                    requerido </small>
             </div>
             <!-- Prioridad -->
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Prioridad</label>
-                <select [ngClass]="{'is-invalid': this.formTaskEdit.get('priority')?.invalid}" class="form-control"
+                <select  class="form-control"
                     formControlName="priority" id="exampleFormControlSelect1">
                     <option value="H">Alta</option>
                     <option value="M">Media</option>
                     <option value="L">Baja</option>
                 </select>
 
-                <small class="text-danger" *ngIf="formTaskEdit.get('priority')?.errors?.['required']"> El campo es
-                    requerido </small>
+                
             </div>
 
             <!-- Fecha de expiracion -->
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Fecha expiracion</label>
                 <input type="datetime-local" formControlName="expirationDate"
-                    [ngClass]="{'is-invalid': this.formTaskEdit.get('expirationDate')?.invalid}" class="form-control"
+                [ngClass]="{'is-valid': formTaskEdit.get('name')?.valid && formTaskEdit.get('name')?.touched,'is-invalid': formTaskEdit.get('name')?.invalid && formTaskEdit.get('name')?.touched}" class="form-control"
                     id="exampleFromcontrolInput">
-                <small class="text-danger" *ngIf="formTaskEdit.get('expirationDate')?.errors?.['required']"> El campo es
-                    requerido </small>
+                
+                    <div class="invalid-feedback" *ngIf="formTaskEdit.get('name')?.invalid && formTaskEdit.get('name')?.touched">
+                        <small *ngIf="formTaskEdit.get('name')?.errors?.['required']"> Please choose a username.</small>
+                        <small *ngIf="formTaskEdit.get('name')?.errors?.['maxlength']"> Demasiado Largo.</small>
+                        <small *ngIf="formTaskEdit.get('name')?.errors?.['minlength']"> Demasiado corto</small>
+    
+                    </div>
             </div>
             <br><br><button class="btn btn-primary" type="submit">Guardar Cambios</button>
         </form>
