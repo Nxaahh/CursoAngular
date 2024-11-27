@@ -16,8 +16,8 @@ export class TaskformComponent {
   constructor(formBuilder: FormBuilder) {
     this.formTaskEdit = formBuilder.group({
       'name': ['', [Validators.required,Validators.maxLength(50),Validators.minLength(5)]],
-      'description': ['', [Validators.required]],
-      'priority': ['', [Validators.required]],
+      'description': ['', [Validators.required,Validators.maxLength(250)]],
+      'priority': ['', [Validators.required,Validators.pattern('^[HML]$')]],
       'expirationDate': ['', [Validators.required, customValidator()]],
 
     })
