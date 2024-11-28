@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Task, TaskPriority, TaskStatus } from '../../../models/task.models';
-import { CommonModule } from '@angular/common';
-import { ResumeComponent } from '../resume/resume.component';
-import { TaskEvent } from '../../../models/taskevent.models';
-import { TaskformComponent } from '../taskform/taskform.component';
+import {Component} from '@angular/core';
+import {Task, TaskPriority, TaskStatus} from '../../../models/task.models';
+import {CommonModule} from '@angular/common';
+import {ResumeComponent} from '../resume/resume.component';
+import {TaskEvent} from '../../../models/taskevent.models';
+import {TaskformComponent} from '../taskform/taskform.component';
 
 @Component({
   selector: 'app-tasklist',
@@ -14,12 +14,27 @@ import { TaskformComponent } from '../taskform/taskform.component';
 })
 export class TasklistComponent {
   tasklist: Task[] = [
-    new Task(1, "Tarea 1", "Descripción Tarea 1", TaskPriority.LOW, TaskStatus.PENDING, new Date("11/1/2024"), new Date("11/18/2024"), false),
-    new Task(2, "Tarea 2", "Descripción Tarea 2", TaskPriority.HIGH, TaskStatus.IN_PROGRESS, new Date("11/5/2024"), new Date("11/16/2024"), false),
-    new Task(3, "Tarea 3", "Descripción Tarea 3", TaskPriority.LOW, TaskStatus.IN_PROGRESS, new Date("11/21/2024"), new Date("11/30/2024"), false),
-    new Task(4, "Tarea 4", "Descripción Tarea 4", TaskPriority.HIGH, TaskStatus.COMPLETED, new Date("11/8/2024"), new Date("11/21/2024"), false),
+    new Task(1, "Tarea 1", "Descripción Tarea 1", TaskPriority.LOW, TaskStatus.IN_PROGRESS, new Date("11/1/2024"), new Date("11/18/2024"), false),
+    new Task(2, "Tarea 2", "Descripción Tarea 2", TaskPriority.HIGH, TaskStatus.PENDING, new Date("11/5/2024"), new Date("11/16/2024"), false),
+    new Task(3, "Tarea 3", "Descripción Tarea 3", TaskPriority.LOW, TaskStatus.COMPLETED, new Date("11/21/2024"), new Date("11/30/2024"), false),
+    new Task(4, "Tarea 4", "Descripción Tarea 4", TaskPriority.HIGH, TaskStatus.IN_PROGRESS, new Date("11/8/2024"), new Date("11/21/2024"), false),
     new Task(5, "Tarea 5", "Descripción Tarea 5", TaskPriority.MEDIUM, TaskStatus.PENDING, new Date("11/10/2024"), new Date("11/30/2024"), false)
   ]
+
+
+  taskToEdit: Task | null = null; 
+
+  //añade una lista al array
+  addNewTask(task: Task) {
+    this.tasklist.push(task); 
+  }
+
+ 
+//pone la lista en el formulair
+  setTaskToEdit(task: Task) {
+    this.taskToEdit = task; 
+  }
+
 
   modifyTask(taskEvent: TaskEvent) {
 
