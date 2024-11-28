@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import path from 'path';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SiginComponent } from './components/auth/sigin/sigin.component';
 import { TasklistComponent } from './components/task/tasklist/tasklist.component';
