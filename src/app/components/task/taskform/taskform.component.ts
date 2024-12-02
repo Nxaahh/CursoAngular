@@ -1,9 +1,9 @@
 import {CommonModule} from '@angular/common';
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms'
-import {customValidator, customValidatorPriority} from './taskForm.validators';
 import {Task, TaskStatus} from '../../../models/task.models';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {customValidator, customValidatorPriority} from './taskForm.validators';
 
 @Component({
   selector: 'app-taskform',
