@@ -1,14 +1,13 @@
-import {Component} from '@angular/core';
-import {RouterOutlet} from '@angular/router';
-import {FormsModule} from '@angular/forms'
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'angular-tutorial-app';
+  title = 'restaurant-booking';
 }

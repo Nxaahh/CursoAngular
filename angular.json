@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-tutorial": {
+    "restaurant-booking": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-tutorial",
+            "outputPath": "dist/restaurant-booking",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -23,8 +23,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-                "src/_redirects"
+                "input": "public"
               }
             ],
             "styles": [
@@ -34,12 +33,7 @@
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
@@ -69,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-tutorial:build:production"
+              "buildTarget": "restaurant-booking:build:production"
             },
             "development": {
-              "buildTarget": "angular-tutorial:build:development"
+              "buildTarget": "restaurant-booking:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -104,6 +98,6 @@
     }
   },
   "cli": {
-    "analytics": "ee1edeff-02f1-493c-a7e4-e8d5328adff0"
+    "analytics": "0b7b42a2-8b79-48bb-ac5b-deefa0a9cba8"
   }
 }
